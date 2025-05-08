@@ -1,42 +1,26 @@
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu/navigation-menu.tsx";
-import logo from "./assets/alexoodev-logo.png";
-
-import { ReactNode } from "react";
-
-type ContainerProps = {
-  children: ReactNode;
-};
-const Container = ({ children }: ContainerProps) => {
-  return <div className="bg-gray-900  min-h-svh">{children}</div>;
-};
+import React from 'react';
+import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar';
+import Hero from './components/Hero';
+import WorkExperience from './components/WorkExperience';
+import Footer from './components/Footer';
+import { useSidebarStore } from './store/sidebarStore';
 
 function App() {
+  const { isSidebarOpen } = useSidebarStore();
+
   return (
-    <>
-      <NavigationMenu className="bg-gray-800 min-w-full max-h-12 justify-between">
-        <img src={logo} className="w-1.5" />
-        <NavigationMenuList>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Home</NavigationMenuTrigger>
-            <NavigationMenuContent className="bg-gray-800 text-white">
-              <NavigationMenuLink>Task Board</NavigationMenuLink>
-              <NavigationMenuLink>Weather App</NavigationMenuLink>
-              <NavigationMenuLink>Pomodor Timer</NavigationMenuLink>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
-      <Container>
-        <text>content</text>
-      </Container>
-    </>
+    <div className="min-h-screen flex flex-col bg-background-dark">
+      <Navbar />
+      <Sidebar />
+      
+      <main className={`flex-grow transition-all duration-300 ${isSidebarOpen ? 'md:ml-64' : 'ml-0'}`}>
+        <Hero />
+        <WorkExperience />
+      </main>
+      
+      <Footer />
+    </div>
   );
 }
 
