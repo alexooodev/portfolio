@@ -65,3 +65,29 @@
     @apply w-full;
   }
 }
+
+/* Slick carousel customizations */
+.slick-prev,
+.slick-next {
+  @apply z-10 w-10 h-10 bg-gray-800/50 rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors;
+}
+
+.slick-prev {
+  @apply left-4;
+}
+
+.slick-next {
+  @apply right-4;
+}
+
+.slick-dots {
+  @apply bottom-4;
+}
+
+.slick-dots li button:before {
+  @apply text-white opacity-50;
+}
+
+.slick-dots li.slick-active button:before {
+  @apply text-primary-500 opacity-100;
+}
