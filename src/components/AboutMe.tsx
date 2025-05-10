@@ -1,39 +1,39 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Code, Coffee, Gamepad, Book, Plane, Camera } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Code, Coffee, Gamepad, Book, Plane, Camera } from "lucide-react";
 
 const AboutMe: React.FC = () => {
   const interests = [
     {
       icon: <Code className="h-6 w-6" />,
       title: "Coding",
-      description: "Passionate about creating elegant solutions to complex problems."
+      description: "Passionate about creating elegant solutions to complex problems.",
     },
     {
       icon: <Coffee className="h-6 w-6" />,
       title: "Coffee",
-      description: "Exploring different brewing methods and coffee origins."
+      description: "Exploring different brewing methods and coffee origins.",
     },
     {
       icon: <Gamepad className="h-6 w-6" />,
       title: "Gaming",
-      description: "Enjoying strategy games and indie titles in my free time."
+      description: "Enjoying strategy games and indie titles in my free time.",
     },
     {
       icon: <Book className="h-6 w-6" />,
       title: "Reading",
-      description: "Tech blogs, sci-fi novels, and personal development books."
+      description: "Tech blogs, sci-fi novels, and personal development books.",
     },
     {
       icon: <Plane className="h-6 w-6" />,
       title: "Travel",
-      description: "Exploring new cultures and gathering diverse perspectives."
+      description: "Exploring new cultures and gathering diverse perspectives.",
     },
     {
       icon: <Camera className="h-6 w-6" />,
       title: "Photography",
-      description: "Capturing moments and practicing mobile photography."
-    }
+      description: "Capturing moments and practicing mobile photography.",
+    },
   ];
 
   return (
@@ -49,8 +49,8 @@ const AboutMe: React.FC = () => {
           <h2 className="text-3xl font-bold mb-4">More About Me</h2>
           <div className="w-16 h-1 bg-primary-500 mx-auto"></div>
           <p className="mt-4 text-gray-300 max-w-2xl mx-auto">
-            Beyond coding, I'm passionate about various interests that shape who I am
-            and influence my creative approach to problem-solving.
+            Beyond coding, I'm passionate about various interests that shape who I am and influence my creative approach
+            to problem-solving.
           </p>
         </motion.div>
 
@@ -65,9 +65,7 @@ const AboutMe: React.FC = () => {
               className="bg-gray-700 rounded-lg p-6 hover:bg-gray-600 transition-colors"
             >
               <div className="flex items-center mb-4">
-                <div className="text-primary-400 mr-3">
-                  {interest.icon}
-                </div>
+                <div className="text-primary-400 mr-3">{interest.icon}</div>
                 <h3 className="text-xl font-semibold">{interest.title}</h3>
               </div>
               <p className="text-gray-300">{interest.description}</p>

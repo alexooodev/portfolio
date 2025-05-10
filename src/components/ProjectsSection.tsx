@@ -1,10 +1,10 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import Slider from 'react-slick';
+import React from "react";
+import { motion } from "framer-motion";
+import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { projectsData } from '../data/projectsData';
-import { ChevronLeft, ChevronRight, ExternalLink, Github } from 'lucide-react';
+import { projectsData } from "../data/projectsData";
+import { ChevronLeft, ChevronRight, ExternalLink, Github } from "lucide-react";
 
 const ProjectsSection: React.FC = () => {
   const sliderSettings = {
@@ -20,9 +20,9 @@ const ProjectsSection: React.FC = () => {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
-        }
-      }
-    ]
+        },
+      },
+    ],
   };
 
   return (
@@ -53,20 +53,13 @@ const ProjectsSection: React.FC = () => {
                   viewport={{ once: true }}
                   className="bg-gray-800 rounded-lg overflow-hidden shadow-lg"
                 >
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-48 object-cover"
-                  />
+                  <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
                   <div className="p-6">
                     <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
                     <p className="text-gray-300 mb-4">{project.description}</p>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.map((tech, i) => (
-                        <span
-                          key={i}
-                          className="bg-gray-700 text-primary-300 px-3 py-1 rounded-full text-sm"
-                        >
+                        <span key={i} className="bg-gray-700 text-secondary-300 px-3 py-1 rounded-full text-sm">
                           {tech}
                         </span>
                       ))}
@@ -77,7 +70,7 @@ const ProjectsSection: React.FC = () => {
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center text-primary-400 hover:text-primary-300"
+                          className="flex items-center text-secondary-400 hover:text-secondary-300 font-bold"
                         >
                           <ExternalLink className="h-4 w-4 mr-1" />
                           Live Demo
@@ -88,7 +81,7 @@ const ProjectsSection: React.FC = () => {
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center text-primary-400 hover:text-primary-300"
+                          className="flex items-center text-secondary-400 hover:text-primary-300 font-bold"
                         >
                           <Github className="h-4 w-4 mr-1" />
                           Source Code
