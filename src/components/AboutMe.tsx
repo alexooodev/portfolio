@@ -37,7 +37,7 @@ const AboutMe: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="section bg-gray-800">
+    <section id="aboutme" className="section bg-gray-800">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

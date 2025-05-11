@@ -24,23 +24,23 @@ const Navbar: React.FC = () => {
     >
       <nav className="container-custom flex items-center justify-between">
         <div className="flex items-center">
-          <img className="w-40" src={logo} />
-          {/* <Code className="h-8 w-8 text-primary-500 mr-2" /> */}
-          {/* <span className="text-xl font-semibold">Portfolio</span> */}
+          <a href="#home">
+            <img className="w-40" src={logo} />
+          </a>
         </div>
 
         <div className="hidden md:flex space-x-8">
           <a href="#home" className="nav-link">
             Home
           </a>
-          <a href="#experience" className="nav-link">
-            Experience
-          </a>
           <a href="#projects" className="nav-link">
             Projects
           </a>
-          <a href="#contact" className="nav-link">
-            Contact
+          <a href="#experience" className="nav-link">
+            Experience
+          </a>
+          <a href="#aboutme" className="nav-link">
+            About me
           </a>
         </div>
 
