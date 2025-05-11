@@ -23,6 +23,13 @@ const ProjectsSection: React.FC = () => {
         },
       },
     ],
+    appendDots: (dots: React.ReactNode) => (
+      <div>
+        <ul className="slick-dots" style={{ bottom: "-3rem" }}>
+          {dots}
+        </ul>
+      </div>
+    ),
   };
 
   return (
