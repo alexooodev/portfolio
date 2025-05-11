@@ -84,12 +84,12 @@ const Sidebar: React.FC = () => {
               <span>Projects</span>
             </a>
             <a
-              href="#contact"
+              href="#aboutme"
               onClick={closeSidebar}
               className="flex items-center space-x-3 text-gray-300 hover:text-white hover:bg-gray-700 p-2 rounded-md transition-colors"
             >
               <Mail className="h-5 w-5" />
-              <span>Contact</span>
+              <span>About me</span>
             </a>
           </nav>
         </div>

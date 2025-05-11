@@ -29,7 +29,12 @@ const Hero: React.FC = () => {
               <Mail className="h-4 w-4" />
               Contact Me
             </a>
-            <a href="/resume.pdf" className="btn btn-secondary flex items-center gap-2">
+            <a
+              href="https://drive.google.com/file/d/1GoLwIkEq8PPiuiHAvd77kG-G8EFt7kFi/view?usp=drive_link"
+              download="cv.pdf"
+              target="_blank"
+              className="btn btn-secondary flex items-center gap-2"
+            >
               <Download className="h-4 w-4" />
               Download Resume
             </a>

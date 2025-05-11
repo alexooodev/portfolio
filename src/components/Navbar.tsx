@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Menu } from "lucide-react";
 import { useSidebarStore } from "../store/sidebarStore";
-import logo from "../assets/logo.png";
+import logo from "../assets/img/logo.png";
 
 const Navbar: React.FC = () => {
   const { toggleSidebar } = useSidebarStore();
@@ -33,12 +33,13 @@ const Navbar: React.FC = () => {
           <a href="#home" className="nav-link">
             Home
           </a>
-          <a href="#projects" className="nav-link">
-            Projects
-          </a>
           <a href="#experience" className="nav-link">
             Experience
           </a>
+          <a href="#projects" className="nav-link">
+            Projects
+          </a>
+
           <a href="#aboutme" className="nav-link">
             About me
           </a>

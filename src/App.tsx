@@ -19,8 +19,8 @@ function App() {
 
       <main className={`flex-grow transition-all duration-300 ${isSidebarOpen ? "md:ml-64" : "ml-0"}`}>
         <Hero />
-        <ProjectsSection />
         <WorkExperience />
+        <ProjectsSection />
         <AboutMe />
       </main>
 
