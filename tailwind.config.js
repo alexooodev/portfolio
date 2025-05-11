@@ -65,6 +65,9 @@ export default {
       spacing: {
         128: "32rem",
       },
+      inset: {
+        "3/10": "30%",
+      },
       animation: {
         "fade-in": "fadeIn 0.5s ease-out",
         "slide-up": "slideUp 0.5s ease-out",

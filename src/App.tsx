@@ -6,6 +6,7 @@ import ProjectsSection from "./components/ProjectsSection";
 import AboutMe from "./components/AboutMe";
 import Footer from "./components/Footer";
 import ExperienceModal from "./components/ExperienceModal";
+import ContactModal from "./components/ContactModal";
 import { useSidebarStore } from "./store/sidebarStore";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Navbar />
       <Sidebar />
       <ExperienceModal />
+      <ContactModal />
 
       <main className={`flex-grow transition-all duration-300 ${isSidebarOpen ? "md:ml-64" : "ml-0"}`}>
         <Hero />

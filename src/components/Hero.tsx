@@ -1,8 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Download } from "lucide-react";
+import { useContactStore } from "../store/contactStore";
 
 const Hero: React.FC = () => {
+  const { openModal } = useContactStore();
   return (
     <section id="home" className="section pt-28 md:pt-32 min-h-[90vh] flex items-center">
       <div className="container-custom">
@@ -25,10 +27,10 @@ const Hero: React.FC = () => {
           </p>
 
           <div className="flex flex-wrap gap-4 mb-8">
-            <a href="#contact" className="btn btn-primary flex items-center gap-2">
+            <button onClick={openModal} className="btn btn-primary flex items-center gap-2">
               <Mail className="h-4 w-4" />
               Contact Me
-            </a>
+            </button>
             <a
               href="https://drive.google.com/file/d/1GoLwIkEq8PPiuiHAvd77kG-G8EFt7kFi/view?usp=drive_link"
               download="cv.pdf"

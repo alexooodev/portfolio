@@ -1,7 +1,7 @@
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
-import { useModalStore } from '../store/modalStore';
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { X } from "lucide-react";
+import { useModalStore } from "../store/modalStore";
 
 const ExperienceModal: React.FC = () => {
   const { isOpen, experienceDetails, closeModal } = useModalStore();
@@ -23,7 +23,7 @@ const ExperienceModal: React.FC = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="fixed inset-4 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 
+            className="fixed inset-4 md:inset-auto md:left-3/10 md:top-1/4 md:-translate-x-1/2 md:-translate-y-1/2 
                      bg-gray-800 rounded-lg shadow-xl z-50 md:w-[600px] max-h-[90vh] overflow-y-auto"
           >
             <div className="p-6">
@@ -57,10 +57,7 @@ const ExperienceModal: React.FC = () => {
                   <h4 className="text-lg font-semibold text-white mb-2">Technologies Used</h4>
                   <div className="flex flex-wrap gap-2">
                     {experienceDetails.technologies.map((tech, index) => (
-                      <span
-                        key={index}
-                        className="bg-gray-700 text-primary-300 px-3 py-1 rounded-full text-sm"
-                      >
+                      <span key={index} className="bg-gray-700 text-primary-300 px-3 py-1 rounded-full text-sm">
                         {tech}
                       </span>
                     ))}
