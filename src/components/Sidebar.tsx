@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
-import { X, Home, Briefcase, FolderKanban, Mail } from 'lucide-react';
-import { useSidebarStore } from '../store/sidebarStore';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useEffect } from "react";
+import { X, Home, Briefcase, FolderKanban, Mail } from "lucide-react";
+import { useSidebarStore } from "../store/sidebarStore";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Sidebar: React.FC = () => {
   const { isSidebarOpen, closeSidebar } = useSidebarStore();
 
-  // Close sidebar when clicking outside on mobile
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768 && isSidebarOpen) {
@@ -14,13 +13,13 @@ const Sidebar: React.FC = () => {
       }
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [isSidebarOpen, closeSidebar]);
 
   const sidebarVariants = {
-    open: { x: 0, transition: { type: 'tween' } },
-    closed: { x: '-100%', transition: { type: 'tween' } },
+    open: { x: 0, transition: { type: "tween" } },
+    closed: { x: "-100%", transition: { type: "tween" } },
   };
 
   const overlayVariants = {
@@ -47,18 +46,14 @@ const Sidebar: React.FC = () => {
       {/* Sidebar */}
       <motion.aside
         initial="closed"
-        animate={isSidebarOpen ? 'open' : 'closed'}
+        animate={isSidebarOpen ? "open" : "closed"}
         variants={sidebarVariants}
         className="fixed top-0 left-0 h-full w-64 bg-gray-800 z-50 shadow-xl overflow-y-auto"
       >
         <div className="p-4">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-xl font-semibold">Menu</h2>
-            <button
-              onClick={closeSidebar}
-              className="text-gray-400 hover:text-white"
-              aria-label="Close menu"
-            >
+            <button onClick={closeSidebar} className="text-gray-400 hover:text-white" aria-label="Close menu">
               <X className="h-5 w-5" />
             </button>
           </div>
@@ -89,12 +84,12 @@ const Sidebar: React.FC = () => {
               <span>Projects</span>
             </a>
             <a
-              href="#contact"
+              href="#aboutme"
               onClick={closeSidebar}
               className="flex items-center space-x-3 text-gray-300 hover:text-white hover:bg-gray-700 p-2 rounded-md transition-colors"
             >
               <Mail className="h-5 w-5" />
-              <span>Contact</span>
+              <span>About me</span>
             </a>
           </nav>
         </div>

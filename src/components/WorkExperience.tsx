@@ -1,7 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import ExperienceCard from './ExperienceCard';
-import { experienceData } from '../data/experienceData';
+import React from "react";
+import { motion } from "framer-motion";
+import ExperienceCard from "./ExperienceCard";
+import { experienceData } from "../data/experienceData";
 
 const WorkExperience: React.FC = () => {
   return (
@@ -17,8 +17,8 @@ const WorkExperience: React.FC = () => {
           <h2 className="text-3xl font-bold mb-4">Work Experience</h2>
           <div className="w-16 h-1 bg-primary-500 mx-auto"></div>
           <p className="mt-4 text-gray-300 max-w-2xl mx-auto">
-            I've collaborated with amazing companies to create exceptional digital experiences.
-            Here's a snapshot of my professional journey.
+            I've collaborated with amazing companies to create exceptional digital experiences. Here's a snapshot of my
+            professional journey.
           </p>
         </motion.div>
 
