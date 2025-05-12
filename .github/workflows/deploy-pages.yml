@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install pnpm # 📌 Paso para instalar pnpm antes de usarlo
+      - name: Install pnpm
         run: npm install -g pnpm
 
       - name: Setup Node.js
@@ -31,8 +31,8 @@ jobs:
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
-          account_id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          project_name: "alexooodev-portfolio"
-          branch: ${{ github.ref_name }}
-          api_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: "alexooodev-portfolio"
           directory: "dist"
+          branch: ${{ github.ref_name }}
