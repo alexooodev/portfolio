@@ -13,6 +13,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Install pnpm # 📌 Paso para instalar pnpm antes de usarlo
+        run: npm install -g pnpm
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
