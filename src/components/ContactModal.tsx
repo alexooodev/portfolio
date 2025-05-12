@@ -76,7 +76,7 @@ const ContactModal: React.FC = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="fixed left-3/10 top-1/4 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] md:w-[500px] max-h-[90vh] 
+            className="fixed md:left-3/10 md:top-1/4 left-0.5/10 top-1/4 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] md:w-[500px] max-h-[90vh] 
                      bg-gray-800 rounded-lg shadow-xl z-50 overflow-y-auto"
           >
             <div className="p-6">
