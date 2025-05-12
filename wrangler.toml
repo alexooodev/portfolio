@@ -1,4 +1,4 @@
-name = "alexooodev-portfolio-development"
+name = "alexooodev-portfolio"
 account_id = "${CLOUDFLARE_ACCOUNT_ID}"
 
 [env.production]
