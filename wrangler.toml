@@ -1,14 +1,3 @@
-# name = "alexooodev-porfolio"
-# compatibility_date = "2025-05-11"
-# assets = { directory = "dist" }
-
-
-name = "alexooodev-portfolio"
-
-[env.development]
-route = "dev.midominio.com/*"
-vars = { ENTORNO = "desarrollo", API_URL = "https://api-dev.midominio.com" }
-
-[env.production]
-route = "midominio.com/*"
-vars = { ENTORNO = "produccion", API_URL = "https://api.midominio.com" }
+name = "alexooodev-porfolio"
+compatibility_date = "2025-05-11"
+assets = { directory = "dist" }
