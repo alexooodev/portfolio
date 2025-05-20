@@ -1,3 +1,14 @@
-name = "alexooodev-porfolio"
-compatibility_date = "2025-05-11"
-assets = { directory = "dist" }
+name = "alexooodev-portfolio"
+main = "dist/index.html"
+compatibility_date = "2025-05-05"
+
+[site]
+bucket = "./dist"
+
+[env.development]
+name = "alexooodev-portfolio-dev"
+vars = { ENVIRONMENT = "development" }
+
+[env.production]
+name = "alexooodev-portfolio"
+vars = { ENVIRONMENT = "production" }
