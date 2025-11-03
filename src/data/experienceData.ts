@@ -1,26 +1,50 @@
 export const experienceData = [
   {
-    company: "TechCorp Inc.",
-    position: "Senior Frontend Engineer",
-    duration: "Jan 2022 - Present",
-    description: "Led the development of the company's flagship SaaS product, implementing new features and optimizing performance. Mentored junior developers and established frontend best practices and coding standards.",
-    companyDescription: "TechCorp is a leading provider of enterprise SaaS solutions that help businesses streamline their operations and improve productivity.",
-    technologies: ["React", "TypeScript", "Redux", "Tailwind CSS", "GraphQL", "Jest"]
+    company: "Mercado Libre",
+    position: "Frontend Engineer",
+    duration: "Apr 2023 - Mar 2024",
+    description:
+      "Spearheaded the enhancement of a mission-critical admin dashboard serving thousands of sellers daily. Orchestrated a comprehensive system migration to modern architecture, achieving a 15% reduction in errors and load times. Fostered team growth through active mentorship and knowledge sharing.",
+    companyDescription:
+      "Latin America's largest e-commerce and fintech ecosystem, connecting millions of buyers and sellers across 18 countries with innovative marketplace and payment solutions.",
+    technologies: [
+      "React",
+      "TypeScript",
+      "Redux",
+      "Next.js",
+      "Tailwind CSS",
+      "REST APIs",
+      "Jest",
+      "React Testing Library",
+    ],
   },
   {
-    company: "WebSolutions Ltd.",
-    position: "Frontend Developer",
-    duration: "Mar 2020 - Dec 2021",
-    description: "Developed and maintained multiple client websites and web applications. Collaborated with designers to implement responsive UI components and ensure cross-browser compatibility.",
-    companyDescription: "WebSolutions is a digital agency specializing in creating custom web applications and websites for businesses across various industries.",
-    technologies: ["React", "JavaScript", "SCSS", "REST API", "Webpack", "Cypress"]
+    company: "Falabella Retail",
+    position: "Full Stack Developer",
+    duration: "Jan 2022 - Mar 2023",
+    description:
+      "Engineered a mobile-first digital assistant that transformed the in-store shopping experience, delivering real-time product insights to customers. Architected responsive interfaces in close partnership with design teams, while optimizing backend integrations that improved system performance by 20%.",
+    companyDescription:
+      "Leading South American retail conglomerate operating department stores, home improvement centers, and supermarkets across Chile, Peru, Colombia, and Argentina.",
+    technologies: [
+      "React Native",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Redux",
+      "REST APIs",
+      "TypeScript",
+      "Styled Components",
+    ],
   },
   {
-    company: "StartupX",
-    position: "Junior Web Developer",
-    duration: "Jun 2018 - Feb 2020",
-    description: "Assisted in building the company's web application frontend. Implemented UI designs and contributed to the component library. Participated in code reviews and daily Scrum meetings.",
-    companyDescription: "StartupX is an innovative tech startup focusing on AI-powered solutions for the education sector, providing tools to enhance learning experiences.",
-    technologies: ["Vue.js", "JavaScript", "CSS3", "HTML5", "Git", "Jira"]
-  }
+    company: "Ripley",
+    position: "Junior Fullstack Developer",
+    duration: "Oct 2020 - Dec 2021",
+    description:
+      "Contributed to building a proprietary e-commerce management platform that empowered business teams to independently manage their digital catalog and promotional campaigns. Developed core modules for product listings and inventory control while embracing agile methodologies and collaborative development practices.",
+    companyDescription:
+      "Chilean retail corporation with a strong presence across South America, offering department stores, financial services, and real estate solutions.",
+    technologies: ["JavaScript", "React", "Node.js", "MySQL", "Bootstrap", "REST APIs", "Git"],
+  },
 ];
