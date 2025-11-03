@@ -17,8 +17,8 @@ const WorkExperience: React.FC = () => {
           <h2 className="text-3xl font-bold mb-4">Work Experience</h2>
           <div className="w-16 h-1 bg-primary-500 mx-auto"></div>
           <p className="mt-4 text-gray-300 max-w-2xl mx-auto">
-            I've collaborated with amazing companies to create exceptional digital experiences. Here's a snapshot of my
-            professional journey.
+            I’ve contributed to some of the largest e-commerce platforms in Latin America, delivering scalable front-end
+            solutions and high-performance digital experiences at enterprise level.
           </p>
         </motion.div>
 

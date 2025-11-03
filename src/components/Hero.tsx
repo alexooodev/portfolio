@@ -1,10 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Download } from "lucide-react";
-import { useContactStore } from "../store/contactStore";
+// import { useContactStore } from "../store/contactStore";
 
 const Hero: React.FC = () => {
-  const { openModal } = useContactStore();
+  // const { openModal } = useContactStore();
   return (
     <section id="home" className="section pt-28 md:pt-32 min-h-[90vh] flex items-center">
       <div className="container-custom">
@@ -22,20 +22,21 @@ const Hero: React.FC = () => {
           <h2 className="mb-6 text-2xl md:text-3xl text-gray-300">Frontend Software Engineer</h2>
 
           <p className="mb-8 text-lg text-gray-300 max-w-2xl">
-            I create exceptional digital experiences with clean, efficient code. Specializing in modern JavaScript
-            frameworks, I build responsive, high-performance web applications that users love.
+            Frontend Software Engineer focused on building fast, scalable, and user-friendly web applications.
+            Experienced in modern JavaScript ecosystems and e-commerce platforms, with a strong drive for clean
+            architecture, performance, and continuous improvement.
           </p>
 
           <div className="flex flex-wrap gap-4 mb-8">
-            <button onClick={openModal} className="btn btn-primary flex items-center gap-2">
+            {/* <button onClick={openModal} className="btn btn-primary flex items-center gap-2">
               <Mail className="h-4 w-4" />
               Contact Me
-            </button>
+            </button> */}
             <a
               href="https://drive.google.com/file/d/1GoLwIkEq8PPiuiHAvd77kG-G8EFt7kFi/view?usp=drive_link"
               download="cv.pdf"
               target="_blank"
-              className="btn btn-secondary flex items-center gap-2"
+              className="btn btn-primary flex items-center gap-2"
             >
               <Download className="h-4 w-4" />
               Download Resume
