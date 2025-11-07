@@ -1,38 +1,28 @@
 import React from "react";
-import { motion } from "framer-motion";
 import ExperienceCard from "./ExperienceCard";
-import { experienceData } from "../data/experienceData";
+import { EXPERIENCES } from "../data/experienceData";
 
 const WorkExperience: React.FC = () => {
   return (
-    <section id="experience" className="section bg-gray-900">
-      <div className="container-custom">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="mb-12 text-center"
-        >
-          <h2 className="text-3xl font-bold mb-4">Work Experience</h2>
-          <div className="w-16 h-1 bg-primary-500 mx-auto"></div>
-          <p className="mt-4 text-gray-300 max-w-2xl mx-auto">
-            I've collaborated with amazing companies to create exceptional digital experiences. Here's a snapshot of my
-            professional journey.
-          </p>
-        </motion.div>
+    <section id="experience" className="relative py-20">
+      <div className="max-w-7xl mx-auto px-6">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
+          Work{" "}
+          <span className="bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">
+            Experience
+          </span>
+        </h2>
 
-        <div className="space-y-12">
-          {experienceData.map((experience, index) => (
+        <div className="space-y-8">
+          {EXPERIENCES.map((exp, index) => (
             <ExperienceCard
               key={index}
-              company={experience.company}
-              position={experience.position}
-              duration={experience.duration}
-              description={experience.description}
-              companyDescription={experience.companyDescription}
-              technologies={experience.technologies}
-              index={index}
+              id={exp.id}
+              company={exp.company}
+              role={exp.role}
+              period={exp.period}
+              achievements={exp.achievements}
+              location={exp.location}
             />
           ))}
         </div>

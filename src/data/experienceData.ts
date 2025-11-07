@@ -1,5 +1,6 @@
 const EXPERIENCES = [
   {
+    id: "meli",
     company: "Mercado Libre",
     role: "Frontend Engineer",
     period: "Apr 2023 - Nov 2023",
@@ -12,6 +13,7 @@ const EXPERIENCES = [
     ],
   },
   {
+    id: "fala",
     company: "Falabella Retail",
     role: "Full Stack Developer",
     period: "Jan 2022 - Mar 2023",
@@ -23,6 +25,7 @@ const EXPERIENCES = [
     ],
   },
   {
+    id: "ripley",
     company: "Ripley",
     role: "Fullstack Developer Junior",
     period: "Oct 2020 - Dec 2021",

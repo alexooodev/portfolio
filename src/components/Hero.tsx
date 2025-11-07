@@ -1,75 +1,86 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Download } from "lucide-react";
+
 import { useContactStore } from "../store/contactStore";
 
 const Hero: React.FC = () => {
   const { openModal } = useContactStore();
   return (
-    <section id="home" className="section pt-28 md:pt-32 min-h-[90vh] flex items-center">
-      <div className="container-custom">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="max-w-3xl"
-        >
-          <h1 className="mb-4 text-4xl md:text-5xl lg:text-6xl font-bold">
-            <span className="text-white">Hello, I'm </span>
-            <span className="text-primary-500">Alex Silva</span>
-          </h1>
+    <section id="home" className="relative min-h-screen flex items-center pt-20">
+      <div className="max-w-7xl mx-auto px-6 py-20">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="space-y-6">
+            <div className="space-y-2">
+              <p className="text-amber-400 font-semibold">Hello, I'm</p>
+              <h1 className="text-5xl md:text-7xl font-bold">
+                Alex Silva{" "}
+                <span className="bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">
+                  Figueroa
+                </span>
+              </h1>
+              <h2 className="text-2xl md:text-3xl text-slate-400 font-light">Frontend Software Engineer</h2>
+            </div>
 
-          <h2 className="mb-6 text-2xl md:text-3xl text-gray-300">Frontend Software Engineer</h2>
+            <p className="text-lg text-slate-400 leading-relaxed">
+              Specialized in building scalable e-commerce solutions and optimizing user experiences for leading retail
+              companies. Passionate about clean code, modern frameworks, and continuous innovation.
+            </p>
 
-          <p className="mb-8 text-lg text-gray-300 max-w-2xl">
-            I create exceptional digital experiences with clean, efficient code. Specializing in modern JavaScript
-            frameworks, I build responsive, high-performance web applications that users love.
-          </p>
-
-          <div className="flex flex-wrap gap-4 mb-8">
-            <button onClick={openModal} className="btn btn-primary flex items-center gap-2">
-              <Mail className="h-4 w-4" />
-              Contact Me
-            </button>
-            <a
-              href="https://drive.google.com/file/d/1GoLwIkEq8PPiuiHAvd77kG-G8EFt7kFi/view?usp=drive_link"
-              download="cv.pdf"
-              target="_blank"
-              className="btn btn-secondary flex items-center gap-2"
-            >
-              <Download className="h-4 w-4" />
-              Download Resume
-            </a>
+            <div className="flex flex-wrap gap-4">
+              <button
+                onClick={openModal}
+                className="px-8 py-3 bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-900 rounded-lg font-semibold hover:shadow-lg hover:shadow-amber-500/50 transition-all hover:-translate-y-1"
+              >
+                Get in Touch
+              </button>
+              <button
+                onClick={() => console.log("go to experiences")}
+                className="px-8 py-3 border-2 border-amber-500 rounded-lg font-semibold hover:bg-amber-500/10 transition-all"
+              >
+                View Work
+              </button>
+            </div>
           </div>
 
-          <div className="flex space-x-4">
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
-              aria-label="GitHub"
-            >
-              <Github className="h-6 w-6" />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="h-6 w-6" />
-            </a>
-            <a
-              href="mailto:example@example.com"
-              className="text-gray-400 hover:text-white transition-colors"
-              aria-label="Email"
-            >
-              <Mail className="h-6 w-6" />
-            </a>
+          {/* Code Window */}
+          <div className="relative">
+            <div className="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden shadow-2xl">
+              <div className="flex items-center gap-2 px-4 py-3 bg-slate-800 border-b border-slate-700">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                <span className="ml-2 text-sm text-slate-400">alexooo.js</span>
+              </div>
+              <div className="p-6 font-mono text-sm space-y-2">
+                <div>
+                  <span className="text-purple-400">const</span> <span className="text-blue-400">developer</span>{" "}
+                  <span className="text-slate-400">=</span> {"{"}
+                </div>
+                <div className="pl-4">
+                  <span className="text-slate-400">name:</span> <span className="text-amber-400">'Alex Silva'</span>,
+                </div>
+                <div className="pl-4">
+                  <span className="text-slate-400">role:</span>{" "}
+                  <span className="text-amber-400">'Frontend Engineer'</span>,
+                </div>
+                <div className="pl-4">
+                  <span className="text-slate-400">skills:</span> [
+                </div>
+                <div className="pl-8">
+                  <span className="text-amber-400">'React'</span>, <span className="text-amber-400">'TypeScript'</span>,
+                </div>
+                <div className="pl-8">
+                  <span className="text-amber-400">'Next.js'</span>, <span className="text-amber-400">'Tailwind'</span>
+                </div>
+                <div className="pl-4">],</div>
+                <div className="pl-4">
+                  <span className="text-slate-400">passion:</span>{" "}
+                  <span className="text-amber-400">'Building amazing UX'</span>
+                </div>
+                <div>{"};"}</div>
+              </div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
