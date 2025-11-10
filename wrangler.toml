@@ -1,3 +1,8 @@
-name = "alexooodev-porfolio"
-compatibility_date = "2025-05-11"
-assets = { directory = "dist" }
+name = "alexooodev-portfolio"
+account_id = "${CLOUDFLARE_ACCOUNT_ID}"
+
+[env.production]
+routes = ["https://alexsf.dev/*"]
+
+[env.development]
+workers_dev = true # Usa workers.dev hasta configurar un subdominio

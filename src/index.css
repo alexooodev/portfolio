@@ -58,7 +58,7 @@
   }
   
   .nav-link::after {
-    @apply content-[""] absolute left-0 bottom-[-5px] h-[2px] w-0 bg-accent-500 transition-all duration-200;
+    @apply content-[""] absolute left-0 bottom-[-5px] h-[2px] w-0 bg-primary-500 transition-all duration-200;
   }
   
   .nav-link:hover::after {

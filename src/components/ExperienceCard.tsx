@@ -1,66 +1,40 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { useModalStore } from "../store/modalStore";
-import { ChevronRight } from "lucide-react";
-
 interface ExperienceCardProps {
+  id: string;
   company: string;
-  position: string;
-  duration: string;
-  description: string;
-  companyDescription: string;
-  technologies: string[];
-  index: number;
+  role: string;
+  period: string;
+  location: string;
+  achievements: string[];
 }
 
 const ExperienceCard: React.FC<ExperienceCardProps> = (props) => {
-  const { openModal } = useModalStore();
+  const exp = props;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: props.index * 0.1 }}
-      viewport={{ once: true }}
-      className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow cursor-pointer"
-      onClick={() => openModal(props)}
-    >
-      <div className="p-6 md:p-8">
-        <div className="md:flex md:justify-between md:items-start">
-          <div>
-            <h3 className="text-xl md:text-2xl font-semibold text-white">{props.position}</h3>
-            <p className="text-secondary-400 font-medium mt-1">{props.company}</p>
-            <p className="text-gray-400 text-sm mt-1">{props.duration}</p>
-          </div>
+    <div className="group relative bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700 rounded-2xl p-6 md:p-8 hover:border-amber-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-amber-500/10">
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-amber-500 to-yellow-500 rounded-l-2xl"></div>
+
+      <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+        <div>
+          <h3 className="text-2xl font-bold text-white mb-1">{exp.role}</h3>
+          <p className="text-amber-400 font-semibold text-lg">{exp.company}</p>
         </div>
-
-        <div className="mt-6">
-          <p className="text-gray-300 line-clamp-3">{props.description}</p>
-
-          <div className="mt-4 flex flex-wrap gap-2">
-            {props.technologies.slice(0, 3).map((tech, i) => (
-              <span key={i} className="bg-gray-700 text-secondary-300 px-3 py-1 rounded-full text-sm">
-                {tech}
-              </span>
-            ))}
-            {props.technologies.length > 3 && (
-              <span className="text-gray-400 text-sm flex items-center">+{props.technologies.length - 3} more</span>
-            )}
-          </div>
-
-          <button
-            className="mt-6 flex items-center text-secondary-400 hover:text-primary-300 transition-colors"
-            onClick={(e) => {
-              e.stopPropagation();
-              openModal(props);
-            }}
-          >
-            View Details
-            <ChevronRight className="h-4 w-4 ml-1" />
-          </button>
+        <div className="text-slate-400 mt-2 md:mt-0">
+          <p>{exp.period}</p>
+          <p className="text-sm">{exp.location}</p>
         </div>
       </div>
-    </motion.div>
+
+      <ul className="space-y-3 mt-6">
+        {exp.achievements.map((achievement, i) => (
+          <li key={i} className="flex items-start gap-3 text-slate-300">
+            <span className="text-amber-400 mt-1">▹</span>
+            <span>{achievement}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

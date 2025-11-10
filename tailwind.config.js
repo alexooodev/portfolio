@@ -66,6 +66,7 @@ export default {
         128: "32rem",
       },
       inset: {
+        "0.5/10": "5%",
         "3/10": "30%",
       },
       animation: {
