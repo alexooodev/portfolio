@@ -40,7 +40,7 @@ const ContactInfo: React.FC<{ sectionId: string }> = ({ sectionId }) => {
 
         <div className="flex justify-center gap-4">
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/alex-silva-figueroa-5b62a4187/"
             target="_blank"
             rel="noopener noreferrer"
             className="w-14 h-14 flex items-center justify-center bg-slate-800 border border-slate-700 rounded-xl hover:border-amber-500 hover:bg-amber-500/10 transition-all hover:-translate-y-1"
@@ -48,7 +48,7 @@ const ContactInfo: React.FC<{ sectionId: string }> = ({ sectionId }) => {
             <Linkedin size={24} />
           </a>
           <a
-            href="https://github.com"
+            href="https://github.com/alexooodev"
             target="_blank"
             rel="noopener noreferrer"
             className="w-14 h-14 flex items-center justify-center bg-slate-800 border border-slate-700 rounded-xl hover:border-amber-500 hover:bg-amber-500/10 transition-all hover:-translate-y-1"
