@@ -3,7 +3,7 @@ const EXPERIENCES = [
     id: "meli",
     company: "Mercado Libre",
     role: "Frontend Engineer",
-    period: "Apr 2023 - Nov 2023",
+    period: "Apr 2023 - Mar 2024",
     location: "Santiago",
     achievements: [
       "Maintained and optimized the admin dashboard used by sellers to manage promotions and advertising campaigns",
