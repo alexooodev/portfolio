@@ -1,7 +1,10 @@
 import React from "react";
 import { Mail, Github, Linkedin } from "lucide-react";
+import { useContactStore } from "../store/contactStore.ts";
 
 const ContactInfo: React.FC<{ sectionId: string }> = ({ sectionId }) => {
+  const { openModal } = useContactStore();
+
   return (
     <section id={sectionId} className="relative py-20">
       <div className="max-w-4xl mx-auto px-6 text-center">
@@ -27,7 +30,7 @@ const ContactInfo: React.FC<{ sectionId: string }> = ({ sectionId }) => {
 
         <div className="flex justify-center gap-4 mb-8">
           <button
-            onClick={() => console.log("open modal")}
+            onClick={openModal}
             className="px-8 py-4 bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-900 rounded-lg font-semibold hover:shadow-lg hover:shadow-amber-500/50 transition-all hover:-translate-y-1 flex items-center gap-2"
           >
             <Mail size={20} />
