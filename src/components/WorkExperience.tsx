@@ -2,9 +2,9 @@ import React from "react";
 import ExperienceCard from "./ExperienceCard";
 import { EXPERIENCES } from "../data/experienceData";
 
-const WorkExperience: React.FC = () => {
+const WorkExperience: React.FC<{ sectionId: string }> = ({ sectionId }) => {
   return (
-    <section id="experience" className="relative py-20">
+    <section id={sectionId} className="relative py-20">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
           Work{" "}

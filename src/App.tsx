@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Background from "./components/Backfround";
@@ -8,32 +7,24 @@ import WorkExperience from "./components/WorkExperience";
 import Skills from "./components/Skills";
 import ContactInfo from "./components/ContactInfo";
 import Footer from "./components/Footer";
+import { useContactStore } from "./store/contactStore";
+import { SECTIONS } from "./data/sectionsData";
 
 export default function Portfolio() {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const { isOpen, closeModal } = useContactStore();
+
+  const { home, about, experience, skills, contact } = SECTIONS;
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
-      {/* Animated Background */}
       <Background />
-      {/* Header */}
       <Navbar />
-      {/* Hero Section */}
-      <Hero />
-      {/* About Section */}
-      <AboutMe />
-      {/* Experience Section */}
-      <WorkExperience />
-
-      {/* Skills Section */}
-      <Skills />
-      {/* Contact Section */}
-      <ContactInfo />
-
-      {/* Contact Modal */}
-      <ContactModal isOpen={false} onClose={() => setIsContactModalOpen(false)} />
-
-      {/* Footer */}
+      <Hero sectionId={home} />
+      <AboutMe sectionId={about} />
+      <WorkExperience sectionId={experience} />
+      <Skills sectionId={skills} />
+      <ContactInfo sectionId={contact} />
+      <ContactModal isOpen={isOpen} onClose={closeModal} />
       <Footer />
 
       <style>{`

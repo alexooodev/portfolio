@@ -1,43 +1,9 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { Code, Coffee, Gamepad, Book, Plane, Camera, Award, Rocket } from "lucide-react";
+import { Award, Rocket } from "lucide-react";
 
-const AboutMe: React.FC = () => {
-  const interests = [
-    {
-      icon: <Code className="h-6 w-6" />,
-      title: "Coding",
-      description: "Passionate about creating elegant solutions to complex problems.",
-    },
-    {
-      icon: <Coffee className="h-6 w-6" />,
-      title: "Coffee",
-      description: "Exploring different brewing methods and coffee origins.",
-    },
-    {
-      icon: <Gamepad className="h-6 w-6" />,
-      title: "Gaming",
-      description: "Enjoying strategy games and indie titles in my free time.",
-    },
-    {
-      icon: <Book className="h-6 w-6" />,
-      title: "Reading",
-      description: "Tech blogs, sci-fi novels, and personal development books.",
-    },
-    {
-      icon: <Plane className="h-6 w-6" />,
-      title: "Travel",
-      description: "Exploring new cultures and gathering diverse perspectives.",
-    },
-    {
-      icon: <Camera className="h-6 w-6" />,
-      title: "Photography",
-      description: "Capturing moments and practicing mobile photography.",
-    },
-  ];
-
+const AboutMe: React.FC<{ sectionId: string }> = ({ sectionId }) => {
   return (
-    <section id="about" className="relative py-20 bg-slate-900/50">
+    <section id={sectionId} className="relative py-20 bg-slate-900/50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto space-y-6">
           <h2 className="text-4xl md:text-5xl font-bold">

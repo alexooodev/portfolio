@@ -1,9 +1,9 @@
 import React from "react";
 import { SKILLS } from "../data/experienceData";
 
-const Skills: React.FC = () => {
+const Skills: React.FC<{ sectionId: string }> = ({ sectionId }) => {
   return (
-    <section id="skills" className="relative py-20 bg-slate-900/50">
+    <section id={sectionId} className="relative py-20 bg-slate-900/50">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
           Technical{" "}

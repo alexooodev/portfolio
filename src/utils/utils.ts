@@ -1,7 +1,4 @@
-export const scrollToSection = (sectionId: string, setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>) => {
-  const element = document.getElementById(sectionId);
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
-    setIsMenuOpen(false);
-  }
+export const capitalize = (text: string): string => {
+  if (!text) return "";
+  return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 };

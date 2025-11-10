@@ -1,8 +1,21 @@
 import React from "react";
 import { Code, Github, Linkedin, Mail } from "lucide-react";
+import { useSidebarStore } from "../store/sidebarStore";
+import { useNavigationStore } from "../store/navigationStore";
+import { SECTIONS } from "../data/sectionsData";
+import { capitalize } from "../utils/utils";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const { isSidebarOpen, closeSidebar } = useSidebarStore();
+  const { scrollToSection } = useNavigationStore();
+
+  const handleNavClick = (section: string) => {
+    scrollToSection(section);
+    if (isSidebarOpen) {
+      closeSidebar();
+    }
+  };
 
   return (
     <footer className="relative border-t border-slate-800 bg-slate-900/50">
@@ -21,7 +34,12 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4 text-white">Quick Links</h3>
             <ul className="space-y-2">
-              <li>
+              {Object.values(SECTIONS).map((section) => (
+                <li key={section} className="text-slate-400 hover:text-primary-400 transition-colors">
+                  <button onClick={() => handleNavClick(section)}>{capitalize(section)}</button>
+                </li>
+              ))}
+              {/* <li>
                 <a href="#home" className="text-slate-400 hover:text-primary-400 transition-colors">
                   Home
                 </a>
@@ -40,7 +58,7 @@ const Footer: React.FC = () => {
                 <a href="#contact" className="text-slate-400 hover:text-primary-400 transition-colors">
                   Contact
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
 
@@ -77,7 +95,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="border-t border-slate-800 mt-8 pt-8 text-center text-slate-400">
-          <p>&copy; {currentYear} John Doe. All rights reserved.</p>
+          <p>&copy; {currentYear} Alex Silva. All rights reserved.</p>
         </div>
       </div>
     </footer>

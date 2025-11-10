@@ -1,11 +1,23 @@
 import React from "react";
 
 import { useContactStore } from "../store/contactStore";
+import { useNavigationStore } from "../store/navigationStore";
+import { useSidebarStore } from "../store/sidebarStore";
+import { SECTIONS } from "../data/sectionsData";
 
-const Hero: React.FC = () => {
+const Hero: React.FC<{ sectionId: string }> = ({ sectionId }) => {
   const { openModal } = useContactStore();
+  const { isSidebarOpen, closeSidebar } = useSidebarStore();
+  const { scrollToSection } = useNavigationStore();
+
+  const handleNavClick = (section: string) => {
+    scrollToSection(section);
+    if (isSidebarOpen) {
+      closeSidebar();
+    }
+  };
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-20">
+    <section id={sectionId} className="relative min-h-screen flex items-center pt-20">
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
@@ -33,7 +45,7 @@ const Hero: React.FC = () => {
                 Get in Touch
               </button>
               <button
-                onClick={() => console.log("go to experiences")}
+                onClick={() => handleNavClick(SECTIONS.experience)}
                 className="px-8 py-3 border-2 border-amber-500 rounded-lg font-semibold hover:bg-amber-500/10 transition-all"
               >
                 View Work

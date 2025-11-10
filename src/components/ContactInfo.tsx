@@ -1,9 +1,9 @@
 import React from "react";
 import { Mail, Github, Linkedin } from "lucide-react";
 
-const ContactInfo: React.FC = () => {
+const ContactInfo: React.FC<{ sectionId: string }> = ({ sectionId }) => {
   return (
-    <section id="contact" className="relative py-20">
+    <section id={sectionId} className="relative py-20">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-8">
           Let's Work{" "}
