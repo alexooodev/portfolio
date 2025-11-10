@@ -1,14 +1,8 @@
-# name = "alexooodev-porfolio"
-# compatibility_date = "2025-05-11"
-# assets = { directory = "dist" }
-
-
 name = "alexooodev-portfolio"
-
-[env.development]
-route = "dev.midominio.com/*"
-vars = { ENTORNO = "desarrollo", API_URL = "https://api-dev.midominio.com" }
+account_id = "${CLOUDFLARE_ACCOUNT_ID}"
 
 [env.production]
-route = "midominio.com/*"
-vars = { ENTORNO = "produccion", API_URL = "https://api.midominio.com" }
+routes = ["https://alexsf.dev/*"]
+
+[env.development]
+workers_dev = true # Usa workers.dev hasta configurar un subdominio
