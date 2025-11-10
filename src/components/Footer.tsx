@@ -39,26 +39,6 @@ const Footer: React.FC = () => {
                   <button onClick={() => handleNavClick(section)}>{capitalize(section)}</button>
                 </li>
               ))}
-              {/* <li>
-                <a href="#home" className="text-slate-400 hover:text-primary-400 transition-colors">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#experience" className="text-slate-400 hover:text-primary-400 transition-colors">
-                  Experience
-                </a>
-              </li>
-              <li>
-                <a href="#projects" className="text-slate-400 hover:text-primary-400 transition-colors">
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-slate-400 hover:text-primary-400 transition-colors">
-                  Contact
-                </a>
-              </li> */}
             </ul>
           </div>
 
@@ -66,7 +46,7 @@ const Footer: React.FC = () => {
             <h3 className="text-lg font-semibold mb-4 text-white">Connect</h3>
             <div className="flex space-x-4 justify-center">
               <a
-                href="https://github.com"
+                href="https://github.com/alexooodev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-400 hover:text-white transition-colors"
@@ -75,7 +55,7 @@ const Footer: React.FC = () => {
                 <Github className="h-5 w-5" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/alex-silva-figueroa-5b62a4187/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-400 hover:text-white transition-colors"
@@ -84,7 +64,7 @@ const Footer: React.FC = () => {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="mailto:example@example.com"
+                href="mailto:alexooodev@gmail.com"
                 className="text-slate-400 hover:text-white transition-colors"
                 aria-label="Email"
               >
