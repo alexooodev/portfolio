@@ -20,7 +20,7 @@ export const es: Messages = {
     headline: "Ingeniero de",
     headlineAccent: "Software",
     summary:
-      "Trabajo con React, Node.js y Java, y los últimos años construí e-commerce de alto tráfico en Mercado Libre, Falabella y Ripley. Hoy además enseño desarrollo cloud native.",
+      "Construyo aplicaciones web de punta a punta, desde la interfaz hasta la API y la nube donde corre. Trabajo con React, Node.js y Java, y también enseño desarrollo cloud native y móvil.",
     getInTouch: "Contáctame",
     viewWork: "Ver proyecto",
   },

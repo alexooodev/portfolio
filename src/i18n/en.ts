@@ -19,7 +19,7 @@ export const en = {
     headline: "Software",
     headlineAccent: "Engineer",
     summary:
-      "I work with React, Node.js and Java, and I've spent the last years building high-traffic e-commerce at Mercado Libre, Falabella and Ripley. Today I also teach cloud-native development.",
+      "I build web applications end to end, from the interface to the API and the cloud it runs on. I work with React, Node.js and Java, and I also teach cloud-native and mobile development.",
     getInTouch: "Get in Touch",
     viewWork: "View Work",
   },
