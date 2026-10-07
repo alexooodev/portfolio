@@ -3,12 +3,14 @@ import { Code, Github, Linkedin, Mail } from "lucide-react";
 import { useSidebarStore } from "../store/sidebarStore";
 import { useNavigationStore } from "../store/navigationStore";
 import { SECTIONS } from "../data/sectionsData";
-import { capitalize } from "../utils/utils";
+import { useMessages } from "../i18n/localeStore";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
   const { isSidebarOpen, closeSidebar } = useSidebarStore();
   const { scrollToSection } = useNavigationStore();
+  const m = useMessages();
+  const t = m.footer;
 
   const handleNavClick = (section: string) => {
     scrollToSection(section);
@@ -26,24 +28,24 @@ const Footer: React.FC = () => {
               <Code className="h-6 w-6 text-primary-500 mr-2" />
               <span className="text-xl font-semibold text-white">Alexooodev</span>
             </div>
-            <p className="text-slate-400">
-              Creating elegant, user-friendly interfaces and exceptional digital experiences.
-            </p>
+            <p className="text-slate-400">{t.tagline}</p>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-white">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-4 text-white">{t.quickLinks}</h3>
             <ul className="space-y-2">
               {Object.values(SECTIONS).map((section) => (
                 <li key={section} className="text-slate-400 hover:text-primary-400 transition-colors">
-                  <button onClick={() => handleNavClick(section)}>{capitalize(section)}</button>
+                  <button onClick={() => handleNavClick(section)}>
+                    {m.nav[section as keyof typeof m.nav] as string}
+                  </button>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-white">Connect</h3>
+            <h3 className="text-lg font-semibold mb-4 text-white">{t.connect}</h3>
             <div className="flex space-x-4 justify-center">
               <a
                 href="https://github.com/alexooodev"
@@ -66,7 +68,7 @@ const Footer: React.FC = () => {
               <a
                 href="mailto:alexooodev@gmail.com"
                 className="text-slate-400 hover:text-white transition-colors"
-                aria-label="Email"
+                aria-label={t.email}
               >
                 <Mail className="h-5 w-5" />
               </a>
@@ -75,7 +77,9 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="border-t border-slate-800 mt-8 pt-8 text-center text-slate-400">
-          <p>&copy; {currentYear} Alex Silva. All rights reserved.</p>
+          <p>
+            &copy; {currentYear} Alex Silva. {t.rights}
+          </p>
         </div>
       </div>
     </footer>

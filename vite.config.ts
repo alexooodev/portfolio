@@ -7,6 +7,10 @@ export default defineConfig({
   server: {
     host: true,
     port: 3000,
+    // Cert Copilot: en desarrollo, /api/cert/* va al servidor del PoC (cert-copilot-poc, `pnpm dev`).
+    proxy: {
+      "/api/cert": { target: "http://localhost:8787", changeOrigin: true },
+    },
   },
   build: {
     outDir: "dist",

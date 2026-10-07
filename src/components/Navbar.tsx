@@ -4,11 +4,15 @@ import { useSidebarStore } from "../store/sidebarStore";
 import { useNavigationStore } from "../store/navigationStore.ts";
 import logoImg from "../assets/img/logo.png";
 import { SECTIONS } from "../data/sectionsData.ts";
+import { useMessages } from "../i18n/localeStore";
+import LanguageToggle from "./LanguageToggle";
 
 const Navbar: React.FC = () => {
   const { isSidebarOpen, toggleSidebar, closeSidebar } = useSidebarStore();
   const { activeSection, setActiveSection, scrollToSection } = useNavigationStore();
   const [scrolled, setScrolled] = useState(false);
+  const { nav } = useMessages();
+  const label = (section: string) => nav[section as keyof typeof SECTIONS];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,19 +61,27 @@ const Navbar: React.FC = () => {
               <li key={section}>
                 <button
                   onClick={() => handleNavClick(section)}
-                  className={`capitalize hover:text-amber-400 transition-colors ${
+                  className={`hover:text-amber-400 transition-colors ${
                     activeSection === section ? "text-amber-400" : "text-slate-400"
                   }`}
                 >
-                  {section}
+                  {label(section)}
                 </button>
               </li>
             ))}
           </ul>
 
-          <button onClick={toggleSidebar} className="md:hidden text-slate-300 hover:text-white">
-            {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-3">
+            <LanguageToggle />
+            <button
+              onClick={toggleSidebar}
+              aria-label={isSidebarOpen ? nav.closeMenu : nav.openMenu}
+              aria-expanded={isSidebarOpen}
+              className="md:hidden text-slate-300 hover:text-white"
+            >
+              {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {isSidebarOpen && (
@@ -79,11 +91,11 @@ const Navbar: React.FC = () => {
                 <li key={section}>
                   <button
                     onClick={() => handleNavClick(section)}
-                    className={`capitalize transition-colors w-full text-left ${
+                    className={`transition-colors w-full text-left ${
                       activeSection === section ? "text-amber-400" : "text-slate-300 hover:text-amber-400"
                     }`}
                   >
-                    {section}
+                    {label(section)}
                   </button>
                 </li>
               ))}

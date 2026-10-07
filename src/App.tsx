@@ -2,6 +2,7 @@ import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Background from "./components/Backfround";
 import ContactModal from "./components/ContactModal";
+import Projects from "./components/Projects";
 import AboutMe from "./components/AboutMe";
 import WorkExperience from "./components/WorkExperience";
 import Skills from "./components/Skills";
@@ -13,16 +14,17 @@ import { SECTIONS } from "./data/sectionsData";
 export default function Portfolio() {
   const { isOpen, closeModal } = useContactStore();
 
-  const { home, about, experience, skills, contact } = SECTIONS;
+  const { home, projects, experience, skills, about, contact } = SECTIONS;
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <Background />
       <Navbar />
       <Hero sectionId={home} />
-      <AboutMe sectionId={about} />
+      <Projects sectionId={projects} />
       <WorkExperience sectionId={experience} />
       <Skills sectionId={skills} />
+      <AboutMe sectionId={about} />
       <ContactInfo sectionId={contact} />
       <ContactModal isOpen={isOpen} onClose={closeModal} />
       <Footer />
