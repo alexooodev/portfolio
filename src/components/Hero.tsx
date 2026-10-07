@@ -6,6 +6,15 @@ import { useSidebarStore } from "../store/sidebarStore";
 import { SECTIONS } from "../data/sectionsData";
 import { useMessages } from "../i18n/localeStore";
 
+// Líneas del bloque de código del hero: área -> tecnologías (son nombres propios, no se traducen).
+const CODE_ROWS: [string, string[]][] = [
+  ["frontend", ["React", "Next.js", "TypeScript"]],
+  ["backend", ["Node.js", "NestJS", "Java", "Spring Boot"]],
+  ["cloud", ["AWS", "GCP"]],
+  ["mobile", ["Kotlin"]],
+  ["teaches", ["Cloud Native", "Android"]],
+];
+
 const Hero: React.FC<{ sectionId: string }> = ({ sectionId }) => {
   const { openModal } = useContactStore();
   const { isSidebarOpen, closeSidebar } = useSidebarStore();
@@ -72,20 +81,18 @@ const Hero: React.FC<{ sectionId: string }> = ({ sectionId }) => {
                   <span className="text-slate-400">role:</span>{" "}
                   <span className="text-amber-400">'Software Engineer'</span>,
                 </div>
-                <div className="pl-4">
-                  <span className="text-slate-400">skills:</span> [
-                </div>
-                <div className="pl-8">
-                  <span className="text-amber-400">'React'</span>, <span className="text-amber-400">'TypeScript'</span>,
-                </div>
-                <div className="pl-8">
-                  <span className="text-amber-400">'Node.js'</span>, <span className="text-amber-400">'Java'</span>
-                </div>
-                <div className="pl-4">],</div>
-                <div className="pl-4">
-                  <span className="text-slate-400">passion:</span>{" "}
-                  <span className="text-amber-400">'Building scalable software'</span>
-                </div>
+                {CODE_ROWS.map(([key, values]) => (
+                  <div key={key} className="pl-4 break-words">
+                    <span className="text-slate-400">{key}:</span> [
+                    {values.map((v, i) => (
+                      <React.Fragment key={v}>
+                        {i > 0 && ", "}
+                        <span className="text-amber-400">'{v}'</span>
+                      </React.Fragment>
+                    ))}
+                    ],
+                  </div>
+                ))}
                 <div>{"};"}</div>
               </div>
             </div>
