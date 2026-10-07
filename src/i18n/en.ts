@@ -16,10 +16,10 @@ export const en = {
   },
 
   hero: {
-    headline: "Software engineer building",
-    headlineAccent: "scalable web platforms",
+    headline: "Software",
+    headlineAccent: "Engineer",
     summary:
-      "From React and Next.js interfaces to Node.js and Java services in the cloud, for high-traffic e-commerce used by millions of people across Latin America. I care about maintainable code, performance and working well across teams.",
+      "I work with React, Node.js and Java, and I've spent the last years building high-traffic e-commerce at Mercado Libre, Falabella and Ripley. Today I also teach cloud-native development.",
     getInTouch: "Get in Touch",
     viewWork: "View Work",
   },

@@ -17,10 +17,10 @@ export const es: Messages = {
   },
 
   hero: {
-    headline: "Ingeniero de software que construye",
-    headlineAccent: "plataformas web escalables",
+    headline: "Ingeniero de",
+    headlineAccent: "Software",
     summary:
-      "Desde interfaces con React y Next.js hasta servicios en Node.js y Java en la nube, para e-commerce de alto tráfico usado por millones de personas en Latinoamérica. Me importan el código mantenible, el rendimiento y trabajar bien en equipo.",
+      "Trabajo con React, Node.js y Java, y los últimos años construí e-commerce de alto tráfico en Mercado Libre, Falabella y Ripley. Hoy además enseño desarrollo cloud native.",
     getInTouch: "Contáctame",
     viewWork: "Ver proyecto",
   },
