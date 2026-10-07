@@ -39,7 +39,7 @@ const Skills: React.FC<{ sectionId: string }> = ({ sectionId }) => {
                 Scrum
               </span>
               <span className="px-4 py-1.5 bg-amber-500/20 border border-amber-500/30 rounded-lg text-sm text-slate-200">
-                Kanban
+                Agile
               </span>
             </div>
           </div>
