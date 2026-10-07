@@ -3,6 +3,9 @@ import { ApiError, fetchRecorded, streamAsk } from "./api";
 import { CERT_API_BASE } from "./config";
 import type { AskMeta, AskRequest, CitationCheck, PublicSource, RecordedItem } from "./types";
 
+/** Motivo de un error; el texto (en el idioma activo) lo pone la vista, no el store. */
+export type ErrorKind = "needsCode" | "badCode" | "notFound" | "badLength" | "network" | "closed";
+
 export type TurnStatus = "streaming" | "done" | "no_answer" | "error" | "stopped";
 
 export interface Turn {
@@ -15,8 +18,10 @@ export interface Turn {
   sources: PublicSource[];
   citations: CitationCheck | null;
   meta: AskMeta | null;
-  /** no_answer: mensaje del backend. error: mensaje para mostrar. */
+  /** no_answer: mensaje del backend (viene en el idioma del corpus). */
   message: string | null;
+  /** error: por qué falló. */
+  errorKind: ErrorKind | null;
 }
 
 interface CertCopilotState {
@@ -38,17 +43,13 @@ const MAX_TURNS = 8;
 let controller: AbortController | null = null;
 let seq = 0;
 
-function describeError(e: unknown, hadCode: boolean): string {
+function describeError(e: unknown, hadCode: boolean): ErrorKind {
   if (e instanceof ApiError) {
-    if (e.status === 403) {
-      return hadCode
-        ? "That invitation code didn't work, or live mode is switched off."
-        : "Live questions need an invitation code. Pick one of the example questions instead.";
-    }
-    if (e.status === 404) return "That recorded session is no longer available.";
-    if (e.status === 400) return "The question must be between 3 and 500 characters.";
+    if (e.status === 403) return hadCode ? "badCode" : "needsCode";
+    if (e.status === 404) return "notFound";
+    if (e.status === 400) return "badLength";
   }
-  return "Couldn't reach the Cert Copilot API. Try again in a moment.";
+  return "network";
 }
 
 export const useCertCopilotStore = create<CertCopilotState>((set, get) => {
@@ -70,6 +71,7 @@ export const useCertCopilotStore = create<CertCopilotState>((set, get) => {
       citations: null,
       meta: null,
       message: null,
+      errorKind: null,
     };
     set((s) => ({ busy: true, turns: [...s.turns, turn].slice(-MAX_TURNS) }));
 
@@ -98,19 +100,17 @@ export const useCertCopilotStore = create<CertCopilotState>((set, get) => {
             patch({ status: "done", citations: ev.citations, meta: ev.meta });
             break;
           case "error":
-            patch({ status: "error", message: describeError(null, false) });
+            patch({ status: "error", errorKind: describeError(null, false) });
             break;
         }
       }
       // El stream terminó sin `done`/`no_answer`/`error`: la conexión se cortó.
-      patch((t) =>
-        t.status === "streaming" ? { status: "error", message: "The connection closed before the answer finished." } : {},
-      );
+      patch((t) => (t.status === "streaming" ? { status: "error", errorKind: "closed" } : {}));
     } catch (e) {
       if (ctrl.signal.aborted) {
         patch((t) => (t.status === "streaming" ? { status: "stopped" } : {}));
       } else {
-        patch({ status: "error", message: describeError(e, inviteCode !== "") });
+        patch({ status: "error", errorKind: describeError(e, inviteCode !== "") });
       }
     } finally {
       // Si otra pregunta tomó el relevo, ella se encarga de `busy`.

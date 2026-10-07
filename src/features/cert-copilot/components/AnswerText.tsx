@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { useMessages } from "../../../i18n/localeStore";
 
 interface AnswerTextProps {
   text: string;
@@ -12,6 +13,7 @@ interface AnswerTextProps {
 const TOKEN = /(\[\d{1,3}\]|\*\*[^*\n]+\*\*|`[^`\n]+`)/;
 
 export default function AnswerText({ text, sourceNs, streaming, onCite }: AnswerTextProps) {
+  const t = useMessages().demo.sources;
   return (
     <p className="whitespace-pre-wrap leading-relaxed text-slate-200">
       {text.split(TOKEN).map((part, i) => {
@@ -23,14 +25,14 @@ export default function AnswerText({ text, sourceNs, streaming, onCite }: Answer
               key={i}
               type="button"
               onClick={() => onCite(n)}
-              aria-label={`Show source ${n}`}
+              aria-label={`${t.show} ${n}`}
               className="mx-0.5 inline-flex items-center rounded-md border border-amber-500/40 bg-amber-500/15 px-1.5 text-sm font-semibold text-amber-300 align-baseline hover:bg-amber-500/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 transition-colors"
             >
               {n}
             </button>
           ) : (
             // Cita a una fuente que no existe: se marca, no se enlaza.
-            <span key={i} title="This source doesn't exist" className="mx-0.5 text-red-400 line-through">
+            <span key={i} title={t.missing} className="mx-0.5 text-red-400 line-through">
               {part}
             </span>
           );
@@ -51,7 +53,9 @@ export default function AnswerText({ text, sourceNs, streaming, onCite }: Answer
         }
         return <Fragment key={i}>{part}</Fragment>;
       })}
-      {streaming && <span aria-hidden="true" className="ml-0.5 inline-block h-4 w-1.5 translate-y-0.5 animate-pulse bg-amber-400" />}
+      {streaming && (
+        <span aria-hidden="true" className="ml-0.5 inline-block h-4 w-1.5 translate-y-0.5 animate-pulse bg-amber-400" />
+      )}
     </p>
   );
 }

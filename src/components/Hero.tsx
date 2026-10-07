@@ -4,11 +4,13 @@ import { useContactStore } from "../store/contactStore";
 import { useNavigationStore } from "../store/navigationStore";
 import { useSidebarStore } from "../store/sidebarStore";
 import { SECTIONS } from "../data/sectionsData";
+import { useMessages } from "../i18n/localeStore";
 
 const Hero: React.FC<{ sectionId: string }> = ({ sectionId }) => {
   const { openModal } = useContactStore();
   const { isSidebarOpen, closeSidebar } = useSidebarStore();
   const { scrollToSection } = useNavigationStore();
+  const t = useMessages().hero;
 
   const handleNavClick = (section: string) => {
     scrollToSection(section);
@@ -22,33 +24,30 @@ const Hero: React.FC<{ sectionId: string }> = ({ sectionId }) => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <div className="space-y-2">
-              <p className="text-amber-400 font-semibold">Hello, I'm</p>
+              <p className="text-amber-400 font-semibold">{t.greeting}</p>
               <h1 className="text-5xl md:text-7xl font-bold">
                 Alex Silva{" "}
                 <span className="bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">
                   Figueroa
                 </span>
               </h1>
-              <h2 className="text-2xl md:text-3xl text-slate-400 font-light">Frontend Software Engineer</h2>
+              <h2 className="text-2xl md:text-3xl text-slate-400 font-light">{t.role}</h2>
             </div>
 
-            <p className="text-lg text-slate-400 leading-relaxed">
-              Specialized in building scalable e-commerce solutions and optimizing user experiences for leading retail
-              companies. Passionate about clean code, modern frameworks, and continuous innovation.
-            </p>
+            <p className="text-lg text-slate-400 leading-relaxed">{t.summary}</p>
 
             <div className="flex flex-wrap gap-4">
               <button
                 onClick={openModal}
                 className="px-8 py-3 bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-900 rounded-lg font-semibold hover:shadow-lg hover:shadow-amber-500/50 transition-all hover:-translate-y-1"
               >
-                Get in Touch
+                {t.getInTouch}
               </button>
               <button
                 onClick={() => handleNavClick(SECTIONS.projects)}
                 className="px-8 py-3 border-2 border-amber-500 rounded-lg font-semibold hover:bg-amber-500/10 transition-all"
               >
-                View Work
+                {t.viewWork}
               </button>
             </div>
           </div>

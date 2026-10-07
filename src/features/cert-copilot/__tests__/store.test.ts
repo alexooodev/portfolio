@@ -124,22 +124,23 @@ describe("estados terminales", () => {
     streamAsk.mockImplementation(() => emit([{ type: "error", message: "detalle interno" }]));
     await store().askLive("¿Qué es S3?");
     expect(store().turns[0]?.status).toBe("error");
-    expect(store().turns[0]?.message).not.toContain("detalle interno");
+    expect(store().turns[0]?.errorKind).toBe("network");
+    expect(store().turns[0]?.message).toBeNull();
   });
 
   it("stream que termina sin done → error de conexión cortada", async () => {
     streamAsk.mockImplementation(() => emit([{ type: "token", text: "parcial" }]));
     await store().askLive("¿Qué es S3?");
     expect(store().turns[0]).toMatchObject({ status: "error", answer: "parcial" });
-    expect(store().turns[0]?.message).toMatch(/connection closed/i);
+    expect(store().turns[0]?.errorKind).toBe("closed");
   });
 
   it.each([
-    ["403 sin código", 403, "", /need an invitation code/i],
-    ["403 con código", 403, "MAL", /code didn't work/i],
-    ["404", 404, "", /no longer available/i],
-    ["400", 400, "", /between 3 and 500/i],
-    ["500", 500, "", /Couldn't reach/i],
+    ["403 sin código", 403, "", "needsCode"],
+    ["403 con código", 403, "MAL", "badCode"],
+    ["404", 404, "", "notFound"],
+    ["400", 400, "", "badLength"],
+    ["500", 500, "", "network"],
   ])("ApiError %s", async (_name, status, code, expected) => {
     streamAsk.mockImplementation(() => {
       throw new api.ApiError(status, "x");
@@ -147,7 +148,7 @@ describe("estados terminales", () => {
     store().setInviteCode(code);
     await store().askLive("¿Qué es S3?");
     expect(store().turns[0]?.status).toBe("error");
-    expect(store().turns[0]?.message).toMatch(expected);
+    expect(store().turns[0]?.errorKind).toBe(expected);
   });
 
   it("fallo de red → mensaje genérico", async () => {
@@ -155,7 +156,7 @@ describe("estados terminales", () => {
       throw new TypeError("Failed to fetch");
     });
     await store().askLive("¿Qué es S3?");
-    expect(store().turns[0]?.message).toMatch(/Couldn't reach/i);
+    expect(store().turns[0]?.errorKind).toBe("network");
   });
 });
 
