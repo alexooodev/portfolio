@@ -1,7 +1,7 @@
 import { create } from "zustand";
-import { ApiError, fetchRecorded, streamAsk } from "../lib/certCopilot/api";
-import { CERT_API_BASE } from "../lib/certCopilot/config";
-import type { AskMeta, AskRequest, CitationCheck, PublicSource, RecordedItem } from "../lib/certCopilot/types";
+import { ApiError, fetchRecorded, streamAsk } from "./api";
+import { CERT_API_BASE } from "./config";
+import type { AskMeta, AskRequest, CitationCheck, PublicSource, RecordedItem } from "./types";
 
 export type TurnStatus = "streaming" | "done" | "no_answer" | "error" | "stopped";
 

@@ -1,11 +1,11 @@
 /** @jest-environment node */
-import * as api from "../lib/certCopilot/api";
-import type { AskEvent, AskMeta, CitationCheck, PublicSource } from "../lib/certCopilot/types";
-import { useCertCopilotStore } from "../store/certCopilotStore";
+import * as api from "../api";
+import type { AskEvent, AskMeta, CitationCheck, PublicSource } from "../types";
+import { useCertCopilotStore } from "../store";
 
-jest.mock("../lib/certCopilot/config", () => ({ CERT_API_BASE: "", CERT_COPILOT_ENABLED: true }));
-jest.mock("../lib/certCopilot/api", () => ({
-  ...jest.requireActual("../lib/certCopilot/api"),
+jest.mock("../config", () => ({ CERT_API_BASE: "", CERT_COPILOT_ENABLED: true }));
+jest.mock("../api", () => ({
+  ...jest.requireActual("../api"),
   streamAsk: jest.fn(),
   fetchRecorded: jest.fn(),
 }));

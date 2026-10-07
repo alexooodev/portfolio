@@ -17,7 +17,7 @@ const Hero: React.FC<{ sectionId: string }> = ({ sectionId }) => {
     }
   };
   return (
-    <section id={sectionId} className="relative min-h-screen flex items-center pt-20">
+    <section id={sectionId} className="relative min-h-[85vh] flex items-center pt-20">
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
@@ -45,7 +45,7 @@ const Hero: React.FC<{ sectionId: string }> = ({ sectionId }) => {
                 Get in Touch
               </button>
               <button
-                onClick={() => handleNavClick(SECTIONS.experience)}
+                onClick={() => handleNavClick(SECTIONS.projects)}
                 className="px-8 py-3 border-2 border-amber-500 rounded-lg font-semibold hover:bg-amber-500/10 transition-all"
               >
                 View Work

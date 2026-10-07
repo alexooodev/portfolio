@@ -1,8 +1,8 @@
 /** @jest-environment node */
-import { ApiError, fetchRecorded, parseEvent, streamAsk } from "../lib/certCopilot/api";
-import { safeHref } from "../lib/certCopilot/safeHref";
-import { readSse } from "../lib/certCopilot/sse";
-import type { AskEvent } from "../lib/certCopilot/types";
+import { ApiError, fetchRecorded, parseEvent, streamAsk } from "../api";
+import { safeHref } from "../safeHref";
+import { readSse } from "../sse";
+import type { AskEvent } from "../types";
 
 const enc = new TextEncoder();
 

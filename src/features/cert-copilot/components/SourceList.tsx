@@ -1,6 +1,6 @@
 import { ExternalLink } from "lucide-react";
-import { safeHref } from "../../lib/certCopilot/safeHref";
-import type { PublicSource } from "../../lib/certCopilot/types";
+import { safeHref } from "../safeHref";
+import type { PublicSource } from "../types";
 
 interface SourceListProps {
   idPrefix: string;
@@ -11,8 +11,8 @@ interface SourceListProps {
 export default function SourceList({ idPrefix, sources, activeN }: SourceListProps) {
   return (
     <div>
-      <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-400">Sources</h4>
-      <ol className="grid gap-3 md:grid-cols-2">
+      <h4 className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">Sources</h4>
+      <ol className="space-y-2">
         {sources.map((s) => {
           const href = safeHref(s.url);
           const active = activeN === s.n;
@@ -21,11 +21,11 @@ export default function SourceList({ idPrefix, sources, activeN }: SourceListPro
               key={s.n}
               id={`${idPrefix}-src-${s.n}`}
               aria-current={active ? "true" : undefined}
-              className={`rounded-xl border p-4 text-sm transition-colors ${
+              className={`rounded-xl border p-3 text-sm transition-colors ${
                 active ? "border-amber-500 bg-amber-500/10" : "border-slate-700 bg-slate-800/50"
               }`}
             >
-              <div className="mb-2 flex flex-wrap items-center gap-2">
+              <div className="mb-1.5 flex flex-wrap items-center gap-2">
                 <span className="inline-flex h-6 min-w-6 items-center justify-center rounded-md bg-amber-500/20 px-1.5 text-xs font-bold text-amber-300">
                   {s.n}
                 </span>
@@ -37,13 +37,13 @@ export default function SourceList({ idPrefix, sources, activeN }: SourceListPro
                   {Math.round(s.score * 100)}% match
                 </span>
               </div>
-              <p className="text-slate-400 leading-relaxed">{s.snippet}</p>
+              <p className="line-clamp-3 leading-relaxed text-slate-400">{s.snippet}</p>
               {href && (
                 <a
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-amber-400 hover:text-amber-300"
+                  className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-amber-400 hover:text-amber-300"
                 >
                   <ExternalLink size={14} />
                   Open in the official docs

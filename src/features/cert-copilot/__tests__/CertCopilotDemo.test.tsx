@@ -1,12 +1,12 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import * as api from "../lib/certCopilot/api";
-import type { AskEvent, CitationCheck, PublicSource } from "../lib/certCopilot/types";
-import CertCopilotSection from "../components/certCopilot/CertCopilotSection";
-import { useCertCopilotStore } from "../store/certCopilotStore";
+import * as api from "../api";
+import type { AskEvent, CitationCheck, PublicSource } from "../types";
+import CertCopilotDemo from "../components/CertCopilotDemo";
+import { useCertCopilotStore } from "../store";
 
-jest.mock("../lib/certCopilot/config", () => ({ CERT_API_BASE: "", CERT_COPILOT_ENABLED: true }));
-jest.mock("../lib/certCopilot/api", () => ({
-  ...jest.requireActual("../lib/certCopilot/api"),
+jest.mock("../config", () => ({ CERT_API_BASE: "", CERT_COPILOT_ENABLED: true }));
+jest.mock("../api", () => ({
+  ...jest.requireActual("../api"),
   streamAsk: jest.fn(),
   fetchRecorded: jest.fn(),
 }));
@@ -62,7 +62,7 @@ const clickChip = async () => fireEvent.click(await screen.findByRole("button", 
 describe("modo grabado", () => {
   it("muestra los chips, reproduce la sesión y enlaza las citas con sus fuentes", async () => {
     streamAsk.mockImplementation(() => emit(answerEvents("S3 guarda objetos [1] en buckets [2].", [source(1), source(2)])));
-    render(<CertCopilotSection sectionId="lab" />);
+    render(<CertCopilotDemo />);
 
     await clickChip();
 
@@ -79,14 +79,14 @@ describe("modo grabado", () => {
     expect(items[0]).not.toHaveAttribute("aria-current");
     expect(items[1]).toHaveAttribute("aria-current", "true");
 
-    expect(screen.getByText(/Recorded session/)).toBeInTheDocument();
+    expect(screen.getByText(/^Recorded session ·/)).toBeInTheDocument();
   });
 
   it("avisa cuando la respuesta no trae citas", async () => {
     streamAsk.mockImplementation(() =>
       emit(answerEvents("Respuesta sin citas.", [source(1)], { used: [], invalid: [], hasAnyCitation: false })),
     );
-    render(<CertCopilotSection sectionId="lab" />);
+    render(<CertCopilotDemo />);
     await clickChip();
     expect(await screen.findByText(/no citations/i)).toBeInTheDocument();
   });
@@ -95,7 +95,7 @@ describe("modo grabado", () => {
     streamAsk.mockImplementation(() =>
       emit(answerEvents("Dato [1] y dato [7].", [source(1)], { used: [1], invalid: [7], hasAnyCitation: true })),
     );
-    render(<CertCopilotSection sectionId="lab" />);
+    render(<CertCopilotDemo />);
     await clickChip();
 
     expect(await screen.findByTitle("This source doesn't exist")).toHaveTextContent("[7]");
@@ -105,7 +105,7 @@ describe("modo grabado", () => {
 
   it("renderiza **negrita** y `código` del modelo", async () => {
     streamAsk.mockImplementation(() => emit(answerEvents("Usa **S3** con `aws s3 ls` [1].", [source(1)])));
-    render(<CertCopilotSection sectionId="lab" />);
+    render(<CertCopilotDemo />);
     await clickChip();
 
     expect((await screen.findByText("S3", { selector: "strong" })).tagName).toBe("STRONG");
@@ -116,7 +116,7 @@ describe("modo grabado", () => {
     streamAsk.mockImplementation(() =>
       emit(answerEvents("Dato [1] y [2].", [source(1), source(2, "javascript:alert(1)")])),
     );
-    render(<CertCopilotSection sectionId="lab" />);
+    render(<CertCopilotDemo />);
     await clickChip();
 
     const links = await screen.findAllByRole("link", { name: /Open in the official docs/ });
@@ -130,7 +130,7 @@ describe("modo grabado", () => {
     streamAsk.mockImplementation(() =>
       emit([{ type: "no_answer", reason: "low_relevance", message: "No encontré evidencia suficiente.", topScore: 0.2 }]),
     );
-    render(<CertCopilotSection sectionId="lab" />);
+    render(<CertCopilotDemo />);
     await clickChip();
 
     expect(await screen.findByText("No encontré evidencia suficiente.")).toBeInTheDocument();
@@ -146,7 +146,7 @@ describe("modo grabado", () => {
         });
       })(),
     );
-    render(<CertCopilotSection sectionId="lab" />);
+    render(<CertCopilotDemo />);
     await clickChip();
 
     fireEvent.click(await screen.findByRole("button", { name: /Stop/ }));
@@ -160,7 +160,7 @@ describe("modo grabado", () => {
       throw new TypeError("net");
     });
     streamAsk.mockImplementationOnce(() => emit(answerEvents("Ahora sí [1].", [source(1)])));
-    render(<CertCopilotSection sectionId="lab" />);
+    render(<CertCopilotDemo />);
     await clickChip();
 
     expect(await screen.findByRole("alert")).toHaveTextContent(/Couldn't reach/i);
@@ -171,7 +171,7 @@ describe("modo grabado", () => {
 
   it("Clear borra la conversación", async () => {
     streamAsk.mockImplementation(() => emit(answerEvents("Hola [1].", [source(1)])));
-    render(<CertCopilotSection sectionId="lab" />);
+    render(<CertCopilotDemo />);
     await clickChip();
     await screen.findByText(/Hola/);
 
@@ -183,7 +183,7 @@ describe("modo grabado", () => {
 describe("chips", () => {
   it("si falla la carga ofrece reintentar", async () => {
     fetchRecorded.mockRejectedValueOnce(new Error("down"));
-    render(<CertCopilotSection sectionId="lab" />);
+    render(<CertCopilotDemo />);
 
     expect(await screen.findByText(/Couldn't load the example questions/)).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "Try again" }));
@@ -192,20 +192,20 @@ describe("chips", () => {
 
   it("sin sesiones grabadas muestra el estado vacío", async () => {
     fetchRecorded.mockResolvedValue([]);
-    render(<CertCopilotSection sectionId="lab" />);
+    render(<CertCopilotDemo />);
     expect(await screen.findByText("No recorded sessions yet.")).toBeInTheDocument();
   });
 
-  it("usa el sectionId recibido", async () => {
-    const { container } = render(<CertCopilotSection sectionId="lab" />);
+  it("antes de preguntar muestra una invitación a elegir una pregunta", async () => {
+    render(<CertCopilotDemo />);
     await screen.findByRole("button", { name: CHIP });
-    expect(container.querySelector("section#lab")).not.toBeNull();
+    expect(screen.getByText(/Pick a question above/)).toBeInTheDocument();
   });
 });
 
 describe("modo en vivo", () => {
   const openLive = async () => {
-    render(<CertCopilotSection sectionId="lab" />);
+    render(<CertCopilotDemo />);
     await screen.findByRole("button", { name: CHIP });
     fireEvent.click(screen.getByRole("button", { name: /I have an invitation code/ }));
   };

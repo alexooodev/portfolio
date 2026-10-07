@@ -3,7 +3,7 @@ import { Award, Rocket } from "lucide-react";
 
 const AboutMe: React.FC<{ sectionId: string }> = ({ sectionId }) => {
   return (
-    <section id={sectionId} className="relative py-20 bg-slate-900/50">
+    <section id={sectionId} className="relative py-20">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto space-y-6">
           <h2 className="text-4xl md:text-5xl font-bold">

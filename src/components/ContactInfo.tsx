@@ -6,7 +6,7 @@ const ContactInfo: React.FC<{ sectionId: string }> = ({ sectionId }) => {
   const { openModal } = useContactStore();
 
   return (
-    <section id={sectionId} className="relative py-20">
+    <section id={sectionId} className="relative py-20 bg-slate-900/50">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-8">
           Let's Work{" "}
