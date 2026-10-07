@@ -1,7 +1,7 @@
 import type { Messages } from "./en";
 
 export const es: Messages = {
-  meta: { title: "Alexoodev | Ingeniero de Software Frontend" },
+  meta: { title: "Alex Silva | Ingeniero de Software" },
 
   nav: {
     home: "Inicio",
@@ -17,10 +17,10 @@ export const es: Messages = {
   },
 
   hero: {
-    greeting: "Hola, soy",
-    role: "Ingeniero de Software Frontend",
+    headline: "Ingeniero de software que construye",
+    headlineAccent: "plataformas web escalables",
     summary:
-      "Especializado en construir soluciones de e-commerce escalables y optimizar la experiencia de usuario en grandes empresas de retail. Me apasionan el código limpio, los frameworks modernos y la innovación continua.",
+      "Desde interfaces con React y Next.js hasta servicios en Node.js y Java en la nube, para e-commerce de alto tráfico usado por millones de personas en Latinoamérica. Me importan el código mantenible, el rendimiento y trabajar bien en equipo.",
     getInTouch: "Contáctame",
     viewWork: "Ver proyecto",
   },
@@ -166,7 +166,7 @@ export const es: Messages = {
   about: {
     heading: "Sobre",
     headingAccent: "mí",
-    text: "Desarrollador frontend con experiencia en crear y optimizar aplicaciones de e-commerce, especializado en estrategias de migración, desarrollo y escalabilidad de producto en empresas líderes. Me apasionan el trabajo en equipo y el aprendizaje continuo, y busco constantemente nuevos desafíos que fortalezcan mis habilidades técnicas y aporten al crecimiento de los proyectos en los que participo.",
+    text: "Ingeniero de software con experiencia construyendo y evolucionando aplicaciones web escalables para plataformas de e-commerce de alto tráfico. Trabajo en todo el stack, desde React y Next.js hasta Node.js, NestJS, Java y Spring Boot, sobre AWS y Google Cloud. También hago clases de Cloud Native y Desarrollo Móvil en Duoc UC. Disfruto el trabajo en equipo, la mentoría y los nuevos desafíos.",
     degree: "Ingeniería en Informática",
     experience: "4+ años de experiencia",
   },
@@ -174,7 +174,7 @@ export const es: Messages = {
   contact: {
     heading: "Trabajemos",
     headingAccent: "juntos",
-    text: "Disponible para trabajo remoto. Enfocado en la mejora continua y la innovación en desarrollo frontend.",
+    text: "Disponible para trabajo remoto. Enfocado en construir software mantenible, mejorar el rendimiento y seguir aprendiendo.",
     spanish: "Español (Nativo)",
     english: "Inglés (C1)",
     send: "Envíame un mensaje",
@@ -212,7 +212,7 @@ export const es: Messages = {
   },
 
   footer: {
-    tagline: "Creando interfaces elegantes y fáciles de usar, y experiencias digitales excepcionales.",
+    tagline: "Construyendo software confiable y escalable, y buenas experiencias digitales.",
     quickLinks: "Enlaces rápidos",
     connect: "Conecta",
     email: "Correo",

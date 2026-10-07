@@ -23,15 +23,14 @@ const Hero: React.FC<{ sectionId: string }> = ({ sectionId }) => {
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <div className="space-y-2">
-              <p className="text-amber-400 font-semibold">{t.greeting}</p>
-              <h1 className="text-5xl md:text-7xl font-bold">
-                Alex Silva{" "}
+            <div className="space-y-3">
+              <p className="text-amber-400 font-semibold">Alex Silva Figueroa</p>
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+                {t.headline}{" "}
                 <span className="bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">
-                  Figueroa
+                  {t.headlineAccent}
                 </span>
               </h1>
-              <h2 className="text-2xl md:text-3xl text-slate-400 font-light">{t.role}</h2>
             </div>
 
             <p className="text-lg text-slate-400 leading-relaxed">{t.summary}</p>
@@ -71,7 +70,7 @@ const Hero: React.FC<{ sectionId: string }> = ({ sectionId }) => {
                 </div>
                 <div className="pl-4">
                   <span className="text-slate-400">role:</span>{" "}
-                  <span className="text-amber-400">'Frontend Engineer'</span>,
+                  <span className="text-amber-400">'Software Engineer'</span>,
                 </div>
                 <div className="pl-4">
                   <span className="text-slate-400">skills:</span> [
@@ -80,12 +79,12 @@ const Hero: React.FC<{ sectionId: string }> = ({ sectionId }) => {
                   <span className="text-amber-400">'React'</span>, <span className="text-amber-400">'TypeScript'</span>,
                 </div>
                 <div className="pl-8">
-                  <span className="text-amber-400">'Next.js'</span>, <span className="text-amber-400">'Tailwind'</span>
+                  <span className="text-amber-400">'Node.js'</span>, <span className="text-amber-400">'Java'</span>
                 </div>
                 <div className="pl-4">],</div>
                 <div className="pl-4">
                   <span className="text-slate-400">passion:</span>{" "}
-                  <span className="text-amber-400">'Building amazing UX'</span>
+                  <span className="text-amber-400">'Building scalable software'</span>
                 </div>
                 <div>{"};"}</div>
               </div>

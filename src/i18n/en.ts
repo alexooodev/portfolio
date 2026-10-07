@@ -1,6 +1,6 @@
 /** Textos del sitio en inglés. `es.ts` debe tener exactamente la misma forma (lo exige el tipo `Messages`). */
 export const en = {
-  meta: { title: "Alexoodev | Frontend Software Engineer" },
+  meta: { title: "Alex Silva | Software Engineer" },
 
   nav: {
     home: "Home",
@@ -16,10 +16,10 @@ export const en = {
   },
 
   hero: {
-    greeting: "Hello, I'm",
-    role: "Frontend Software Engineer",
+    headline: "Software engineer building",
+    headlineAccent: "scalable web platforms",
     summary:
-      "Specialized in building scalable e-commerce solutions and optimizing user experiences for leading retail companies. Passionate about clean code, modern frameworks, and continuous innovation.",
+      "From React and Next.js interfaces to Node.js and Java services in the cloud, for high-traffic e-commerce used by millions of people across Latin America. I care about maintainable code, performance and working well across teams.",
     getInTouch: "Get in Touch",
     viewWork: "View Work",
   },
@@ -165,7 +165,7 @@ export const en = {
   about: {
     heading: "About",
     headingAccent: "Me",
-    text: "Frontend developer with experience in creating and optimizing e-commerce applications, specialized in migration strategies, development, and product scalability at leading companies. Passionate about teamwork and continuous learning, I constantly seek new challenges that strengthen my technical skills and contribute to the growth of the projects I participate in.",
+    text: "Software engineer with experience building and evolving scalable web applications for high-traffic e-commerce platforms. I work across the stack, from React and Next.js to Node.js, NestJS, Java and Spring Boot, on AWS and Google Cloud. I also teach Cloud Native and Mobile Development at Duoc UC. I enjoy teamwork, mentoring and taking on new challenges.",
     degree: "Computer Engineering",
     experience: "4+ Years Experience",
   },
@@ -173,7 +173,7 @@ export const en = {
   contact: {
     heading: "Let's Work",
     headingAccent: "Together",
-    text: "Available for remote work. Focused on continuous improvement and innovation in frontend development.",
+    text: "Available for remote work. Focused on building maintainable software, improving performance and continuous learning.",
     spanish: "Spanish (Native)",
     english: "English (C1)",
     send: "Send me a message",
@@ -211,7 +211,7 @@ export const en = {
   },
 
   footer: {
-    tagline: "Creating elegant, user-friendly interfaces and exceptional digital experiences.",
+    tagline: "Building reliable, scalable software and great digital experiences.",
     quickLinks: "Quick Links",
     connect: "Connect",
     email: "Email",
