@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Background from "./components/Backfround";
@@ -7,8 +8,12 @@ import WorkExperience from "./components/WorkExperience";
 import Skills from "./components/Skills";
 import ContactInfo from "./components/ContactInfo";
 import Footer from "./components/Footer";
+import { CERT_COPILOT_ENABLED } from "./lib/certCopilot/config";
 import { useContactStore } from "./store/contactStore";
 import { SECTIONS } from "./data/sectionsData";
+
+// Chunk aparte: con el flag apagado (producción) los visitantes no descargan nada de Cert Copilot.
+const CertCopilotSection = lazy(() => import("./components/certCopilot/CertCopilotSection"));
 
 export default function Portfolio() {
   const { isOpen, closeModal } = useContactStore();
@@ -23,6 +28,11 @@ export default function Portfolio() {
       <AboutMe sectionId={about} />
       <WorkExperience sectionId={experience} />
       <Skills sectionId={skills} />
+      {CERT_COPILOT_ENABLED && (
+        <Suspense fallback={null}>
+          <CertCopilotSection sectionId="lab" />
+        </Suspense>
+      )}
       <ContactInfo sectionId={contact} />
       <ContactModal isOpen={isOpen} onClose={closeModal} />
       <Footer />
